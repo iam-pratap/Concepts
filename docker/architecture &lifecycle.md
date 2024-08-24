@@ -31,11 +31,6 @@ In simple words, you can understand as `containerization is a concept or technol
 
 The above picture, clearly indicates that Docker Deamon is brain of Docker. If Docker Deamon is killed, stops working for some reasons, Docker is brain dead :p (sarcasm intended).
 
-## Ways to create an Images
-1. Take image from docker hub
-2. create image from docker file
-3. create image from existing docker containers
-
 ### Docker daemon
 
 The Docker daemon (dockerd) listens for Docker API requests and manages Docker objects such as images, containers, networks, and volumes. A daemon can also communicate with other daemons to manage Docker services.
@@ -65,12 +60,17 @@ When you use Docker, you are creating and using images, containers, networks, vo
 
 Dockerfile is a file where you provide the steps to build your Docker Image. 
 
-### Images
+### Docker Images
 
-An image is a read-only template with instructions for creating a Docker container. Often, an image is based on another image, with some additional customization. For example, you may build an image which is based on the ubuntu image, but installs the Apache web server and your application, as well as the configuration details needed to make your application run.
+Docker images are the read only binary templetes used to create  docker container.
 
 You might create your own images or you might only use those created by others and published in a registry. To build your own image, you create a Dockerfile with a simple syntax for defining the steps needed to create the image and run it. Each instruction in a Dockerfile creates a layer in the image. When you change the Dockerfile and rebuild the image, only those layers which have changed are rebuilt. This is part of what makes images so lightweight, small, and fast, when compared to other virtualization technologies.
 
+### Docker Container
+- Container hold the entire packages that is needed to run the application.
+- The image is a templete and the container is a copy of that templete.
+- Container is like a virtual machine.
+- Images becames container when they run on docker engine. 
 
 ## Docker LifeCycle 
 
@@ -84,7 +84,32 @@ There are three important things,
 
 ![Screenshot 2023-02-08 at 4 32 13 PM](https://user-images.githubusercontent.com/43399466/217511949-81f897b2-70ee-41d1-b229-38d0572c54c7.png)
 
+## Ways to create an Images
+1. Take image from docker hub
+2. create image from docker file
+3. create image from existing docker containers
 
+## Docker Components
+
+`FROM` For base image. This command must be on top of the dockerfile
+
+`RUN` To execute commands, it will create a layer in image
+
+`MAINTAINER` Author/ Owner/ Description
+
+`COPY` Copy file from local system(dockerVM) we need to provide source destination(we can't download file from internet and any remote repo)
+
+`ADD` Similar to copy but, it provides a feature to download files from internet, also we extract file at docker image side
+
+`EXPOSE` To Expose ports such as port port 80 for nginx 
+
+`WORKDIR` TO Set working directory for a container
+
+`CMD` Execute commands but during container creation
+
+`ENTRYPOINT` Similar to CMD, but has higher priority over CMD, first commands will be executed by ENTRYPOINT Only.
+
+`ENV` Environment variables
 
 ## Files and Folders in containers base images
 
