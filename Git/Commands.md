@@ -16,27 +16,45 @@ git config --global user.email "honey@gmail.com"
 git config --list
 ```
 
-Create a directory and initialise git to make the current directory as a git repo 
+### Create a Project
+
+Create a directory and go inside
 ```
 mkdir mumbaigit
 cd mumbaigit
+```
+Initializes a new Git repository in the current directory.
+```
+git init
+```
+Create one file and put some data
+```
+touch myfile  
+```
 
-git init 
-touch myfile  (put some data)
-
+Shows the current state of your repository, including tracked and untracked files, modified files, and branch information.
+```
 git status
+```
+Adds all modified and new files to the staging area.
+```
 git add .
-
+```
+Creates a new commit with the changes in the staging area and specifies the commit message inline.
+```
 git commit -m "first commit from mumbai"
-
-git status
+```
+Displays the commit history of the current branch.
+```
 git log
-
 git log --oneline
-
-git branch -M main
-
+```
+It shows the commit-ids
+```
 git show <commit-id>
+```
+Configure and connects to github(remote repo)
+```
 git remote add origin <centralgit url>
 
 git push -u origin main
@@ -44,45 +62,52 @@ git push -u origin main
 
 Username:- iam-pratap
 Password:- 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
-
+```
+Fetches changes from the specified remote repository and merges them into the current branch.
+```
 git pull -u origin main
+```
+### .gitignore
 
-**** To Ignore some files while committing ****
+To Ignore some files while committing
 
-__Create one hidden file .gitignore and enter file format which you want to ignore__
+Create one hidden file .gitignore and enter file format which you want to ignore
 for eg:- vi .gitignore >>>>> *.css
                              *.java
-
+```
 git add .gitignore
 git commit -m "Latest update exclude .css"
 
 git status
-
-__Create some text, java &css files and add them by running "git add"__
-for eg:- touch file.txt file2.txt file3.java file4.css
 ```
+Create some text, java &css files and add them by running "git add"
+for eg:- touch file.txt file2.txt file3.java file4.css
 
-## Create branches
+
+### Create branches
 
 To see the list of Available branches
+
 ```
 git branch
 ```
 Create a new Branch
 ```
-git branch <branch name>
+git branch <branch-name>
 ```
-To Switch in another Branch
+Switch to another Branch
 ```
-git checkout <Name of branch you want to go>
+git checkout <Name-of-branch-you-want-to-go>
 ```
 Delete a local branch
 ```
 git branch -d <branch-name>
 ```
 ### Merge
+
+Merges the specified branch into the current branch.
 ```
-git merge <Branch name>
+git merge <Branch-name>
 ```
 
 To verify the merge
