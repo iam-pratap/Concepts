@@ -121,6 +121,12 @@ To push to central repo like GitHub
 git push origin master
 ```
 
+### Rebase
+
+```
+git rebase <feature1> <main>
+```
+
 ### Git Stashing 
 
 To stash an item
