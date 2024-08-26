@@ -61,7 +61,7 @@ git push -u origin main
 (enter username & password)
 
 Username:- iam-pratap
-Password:- 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
+Password:- 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
 ```
 Fetches changes from the specified remote repository and merges them into the current branch.
 ```
