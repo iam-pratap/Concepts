@@ -82,6 +82,7 @@ git status
 ```
 Create some text, java &css files and add them by running "git add"
 for eg:- touch file.txt file2.txt file3.java file4.css
+Now, you will see only .txt format files because we created .gitignore file and exclude .java&.css
 
 
 ### Create branches
