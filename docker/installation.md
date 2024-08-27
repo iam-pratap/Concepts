@@ -122,19 +122,20 @@ vi Dockerfile
 FROM ubuntu:latest
 
 # Set the working directory in the image
-WORKDIR /app
+WORKDIR /tmp
 
 # Copy the files from the host file system to the image file system
-COPY . /app
+COPY testfile1 /tmp
 
 # Install the necessary packages
-RUN apt-get update && apt-get install -y python3 python3-pip
+RUN echo "Hii, this is test" > /tmp/testfile
 
 # Set environment variables
-ENV NAME World
+ENV NAME John-cena
 
 # Run a command to start the application
-CMD ["python3", "app.py"]
+ADD test.tar.gz /tmp
+
 ```
 Now, you need to build image using Dockerfile
 
@@ -234,14 +235,15 @@ Go inside the container
 ```
 docker attach <container_name>
 ```
+Start and Stop a container
+```
+docker start <container_id>
+docker stop <container_id>
+```
 See all container including stopped running
 ```
 docker ps
 docker ps -a
-```
-Stop container
-```
-docker stop <container_id>
 ```
 Delete container
 ```
@@ -303,11 +305,11 @@ docker run -it --name container3 -v /volume2 ubuntu /bin/bash
 ```
 ## Share volume Between Host and container
 
-verify files in /home/ec2-user
+verify files in /home/ubuntu
 
-docker run -it --name hostcont -v /home/ec2-user:/rajput --privileged=true ubuntu /bin/bash
+docker run -it --name hostcont -v /home/ubuntu:/pratap --privileged=true ubuntu /bin/bash
 
-cd /rajput
+cd /pratap
 
 Do ls, now you can see all files of host machine
 
@@ -330,6 +332,7 @@ Remove all unused docker volume
 ```
 docker volume prune
 ```
+See the all details related to volume and container
 ```
 docker volume inspect <volume-name>
 docker container inspect <container-name>
@@ -355,18 +358,30 @@ output:
 ```
 o/p :- 80/TCP -----> 0.0.0.0/80
 ```
+Go inside into the container
+```
 docker exec -it techserver /bin/bash
-
+```
+Update the container and install apach2 webserver
+```
 apt-get update
-
 apt-get install apache2 -y
-
+```
+Go inside html directory & write some data inside index.html folder
+```
 cd /var/www/html
-
 echo "jai jai sri ram" > index.html
-
+```
+Start the webserver
+```
 service apache2 start
+```
+Make sure port is open in AWS security group and go to crome browser paste IP-address:80
 
+Output
+```
+jai jai sri ram
+```
 Stop all running containers
 ```
 docker stop $(docker ps -a -q)
