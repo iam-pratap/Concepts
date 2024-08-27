@@ -285,7 +285,7 @@ docker run -it --name container1 myimage /bin/bash
 do ls, you can myvolume1
 
 ### Share volume with another container
-  container<<<<<------->>>>>container
+  container-------<Volume>---------container
 ```
 docker run -it --name container2 --privileged=true --volumes-from container1 ubuntu1 /bin/bash
 ```
@@ -303,7 +303,8 @@ Create volume and attach volume using command
 ```
 docker run -it --name container3 -v /volume2 ubuntu /bin/bash
 ```
-## Share volume Between Host and container
+### Share volume Between Host and container
+host-------<volume>---------container
 
 verify files in /home/ubuntu
 
