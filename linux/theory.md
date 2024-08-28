@@ -54,3 +54,7 @@ if executable permission is enabled then you will execute this file
 
  Setgid
  same as suid, The process will have the same group rights of the file being executed. If SGID bit is set on any directory, all subdirectories and files created inside will get same group ownership as the main directory, it doesn't matter who is creating.
+
+sticky bit
+
+The sticky bit is used to indicate special permissions for files and directories. If a directory with sticky bit enabled will restrict deletion of the file inside it. It can be removed by root, owner of the file or who have to write permission on it. This is useful for pubically accessible directories like /tmp.
