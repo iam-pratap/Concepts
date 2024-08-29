@@ -1,4 +1,6 @@
-## Permissions in Linux
+# Permissions in Linux
+
+## Default Permission
 
 There are three permissions for any file, directory
 
@@ -54,7 +56,9 @@ vi data
 echo "Hello World"
 ```
 if executable permission is enabled then you will execute this file otherwise see `ls -ltr` and change the file permission to executable
-  
+
+## Special Permissions
+
  ## SetUID
  If SUID bit is set on a file and a user executed it. The process will have the same rights as the owner of the file being executed.
  
@@ -87,3 +91,5 @@ syntax:
 ```
 sudo chmod 1777 <directory-name>
 ```
+Create two user to test the sticky bit special permission then create one directory(test-directory) under /tmp and give full permission(777) to test-derectory. login as user1 and delete user2 or user2's data then you will see it allowing us that is the reason we use sticky bit.
+
