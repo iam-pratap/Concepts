@@ -83,9 +83,11 @@ Syntax:
 CHAGE[-M MINDAYS][-M MAXDAYS][-D LASTDAY][-I INACTIVE][EXPIREDATE][-W WARNDAYS] USER
 ```
 
-List the password and itss related details form an user
+$ chage -l <username>
 
-$ CHAGE --List <username>
+Output:
 
-output:
+Modify(M), Inactive(I), Expiry(E), Warnings(W) password 
+```
+chage -M <time,date etc> <user-name>
 ```
