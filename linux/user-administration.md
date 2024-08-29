@@ -19,6 +19,22 @@ There are four main user administration file -
 
 - `/etc/gshadow` - This file contains secure group account information.
 
+#### create user and set password and delete
+```
+ sudo useradd <username>
+ sudo password <username>
+ cat /etc/passwd
+ sudo deluser <username>
+```
+
+#### create group and add user to group and delete
+```
+ sudo groupadd <group-name>
+ cat /etc/group
+ sudo delgroup <group-name>
+ sudo usermod -aG <groupname> <username>
+```
+
 create user with all related thing like group, id, shell, directory etc
 ```
 sudo useradd -g devops -c "kubernetes admin" -u 1198 -s "/bin/sh" -d /home/pratap pratap
@@ -87,7 +103,8 @@ $ chage -l <username>
 
 Output:
 
-Modify(M), Inactive(I), Expiry(E), Warnings(W) password 
+
+See the user's password expiration detail - Modify(M), Inactive(I), Expiry(E), Warnings(W) password 
 ```
 chage -M <time,date etc> <user-name>
 ```
