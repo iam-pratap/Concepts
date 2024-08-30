@@ -22,7 +22,7 @@ Each of the three permissions are assigned to three defined categories of users.
 
 
 ## Chmod-changing file permissions
-The chmod command command is used to change the permissions of a file or directory
+The chmod command is used to change the permissions of a file or directory
 
 syntax:
 ```
@@ -46,6 +46,11 @@ e.g user=pratap, group=devops
   sudo chown user1:developer <file1>
   sudo chown user2:devops <file2>
 ```
+#### Create groups 
+```
+sudo groupadd devops
+sudo groupadd developer
+```
 If you give a permissions to file is 740 means entry will be restricted for others and login as user1 and try to see the data in file2 and it will say permission denied. then if see the content of file2 then allow access to others in user2.
 
 Try with another example, we have a data and we want to run this
@@ -54,6 +59,10 @@ vi data
 ```
 #!/bin/bash
 echo "Hello World"
+```
+Run this file
+```
+./data
 ```
 if executable permission is enabled then you will execute this file otherwise see `ls -ltr` and change the file permission to executable
 
