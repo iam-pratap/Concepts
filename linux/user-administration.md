@@ -96,15 +96,24 @@ The Command name `CHAGE` is an acronym for `Change age`. This command is used to
 Syntax:
 
 ```
-CHAGE[-M MINDAYS][-M MAXDAYS][-D LASTDAY][-I INACTIVE][EXPIREDATE][-W WARNDAYS] USER
+CHAGE[-M MINDAYS][-M MAXDAYS][-D LASTDAY][-I INACTIVE][EXPIREDATE][-W WARNDAYS] <user-name>
+```
+See the user's password expiration details
+```
+chage -l <user-name>
+```
+Output should look like:
+```
+Last password change                                    : Aug 30, 2024
+Password expires                                        : never
+Password inactive                                       : never
+Account expires                                         : never
+Minimum number of days between password change          : 0
+Maximum number of days between password change          : 99999
+Number of days of warning before password expires       : 7
 ```
 
-$ chage -l <username>
-
-Output:
-
-
-See the user's password expiration detail - Modify(M), Inactive(I), Expiry(E), Warnings(W) password 
+Change the user's password expiration detail - Modify(M), Inactive(I), Expiry(E), Warnings(W) password 
 ```
 chage -M <time,date etc> <user-name>
 ```
