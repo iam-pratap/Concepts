@@ -100,5 +100,5 @@ syntax:
 ```
 sudo chmod 1777 <directory-name>
 ```
-Create two user to test the sticky bit special permission then create one directory(test-directory) under /tmp and give full permission(777) to test-derectory. login as user1 and delete user2 or user2's data then you will see it allowing us that is the reason we use sticky bit.
+Create two user to test the sticky bit special permission then create one directory(test-directory) under directory create one file(testfile) /tmp and give full permission(777) to test-derectory. login as user1 and delete user2's file(testfile) then you will see it allowing us that is the reason we use sticky bit.
 
