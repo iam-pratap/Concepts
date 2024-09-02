@@ -21,6 +21,10 @@
 
 `x(execute)` - The user with this permission can change directory "cd" into this directory
 
+Create a file
+```
+nano testfile
+```
 To view the access control list of a file/directory
 ```
 getfacl <File/dir-name>
@@ -56,7 +60,7 @@ rw - permissions
 
 textfile - the name of the file on which we want to apply the permissions
 
-- AN entry for the user "pratap" has been added and showing permissions whatever we have assigned  to her. we can notice one more entry i.e mask has appered.
+- An entry for the user "pratap" has been added and showing permissions whatever we have assigned  to her. we can notice one more entry i.e mask has appered.
 - The mask associated with an ACL limits the set of permissions that can be assigned on the file for the named groups and users and for the group owner, but has no effect on the permissions for the file owner and the other permission group.
 
 See the ACLs
@@ -143,3 +147,8 @@ setfacl -m u:user2:r filename
 only User2 will access this file because ACL is enabled and access=User2
 
 Create one more user and try to access this file. you will not able to see the content
+
+To remove all ACL from file/directory
+```
+setfacl -b <file/directory>
+```
