@@ -76,6 +76,6 @@ pratap ALL=(ALL) NOPASSWD:ALL
   ```
 - You may also specify some commands to be ran with a password and some "password-free" on one line, in the below example we allow pratap to run only the partedcommand without any password prompt:
 
-- ```
+  ```
   pratap ALL=(ALL) /usr/bin/yum, /sbin/mount, /sbin/ifconfig, NOPASSWD:/sbin/parted
   ```
