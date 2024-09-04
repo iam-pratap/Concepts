@@ -26,22 +26,22 @@ The sudo command is basically a command that allow one user to execute a command
 ## Alias:
 
 #### User alias specification
-
+```
 User_Alias FULLTIMERS = millert, mikef, dowdy
-
+```
 #### Runas alias specification
-
+```
 Runas_Alias DB = oracle, sybase
-
+```
 #### Host alias specification
-
+```
 Host_alias CUNETS = 128.138.0.0/255.255.0.0
-
+```
 #### Cmnd alias specification
-
+```
 Cmnd_Alias DUMPS = /usr/sbin/dump, /usr/sbin
 Cmnd_Alias KILL = /usr/bin/kill
-
+```
 When you first open the sudoers file the only not-commented line is:
 
 root ALL=(ALL) ALL
