@@ -15,9 +15,9 @@ jobs:
       - name: Login to AWS
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-access-key-id: ${{ secrets.AKIASBILANF7ZILZBYMV }}
-          aws-secret-access-key: ${{ secrets.9zf6wq4jTfqt3Bkj1S24E8T86/j6UgL3c3WE2ZKn }}
-          aws-region: ${{ secrets.ap-south-1 }}
+          aws-access-key-id: ${{ AKIASBILANF7ZILZBYMV }}
+          aws-secret-access-key: ${{ 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 }}
+          aws-region: ${{ ap-south-1 }}
 
       - name: Terraform init and apply
         run: |
