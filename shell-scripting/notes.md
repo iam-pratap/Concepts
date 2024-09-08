@@ -1,67 +1,82 @@
-What is automation
+# Interview Q&A with Notes
 
+`1. What is automation?`
 Automation is the process where we reduce manual activies
 
-what is the difference between /bin/sh and /bin/bash
-
+`2. What is the difference between /bin/sh and /bin/bash?`
 Previously both of them were same because /bin/sh was redirecting using the linking concept to /bin/bash but now it is not the same because some of the operating systems have decided to use dash as default. so your script might not execute if you are writing in bash scripting.
 
 shebang??
 
 
-for print any thing in shellscripts we use echo
+**Note:** For print any thing in shell scripts we use "echo"
 
+### Example
 
-create a shell script
-
-vi my-shell.sh
-
+vi test.sh
+```
 #!/bin/bash
-
 echo "My name is honey"
+```
+save it and change the permission to executable and then execute the script
 
-save it
+Run this script `sh my-shell.sh` or `./my-shell.sh`
 
-execute a script
+Output should look like
+```
+My name is honey
+```
+### Some commands to check the cpu, memory & processes
 
-sh my-shell.sh
-or
-./ my-shell.sh
+`nproc` ----> list the cpu's present in your machine
 
+`free` ---> list the memory present in your machine
 
+`top` ---> which process is currently running
 
-nproc ----> list the cpus on your machine
-free ---> what is the memory present in your machine
-top ---which process is running
-
-why are you using shell scripting
+`4. Why are you using shell scripting?`
 I have automated all the node health of my virtual machines so we have some close to thousand machines and and every time it is difficult to monitor the node health or status of this virtual machine so I,ve decided to write a script.
 there are some automated tools then why are you using this.
 in our orgnization we are not using such tools or you can simply say that you know these tools are restricted for generating some parametersonly a restricted number of parameters but in my script i am fetching more parameters that are not provided by these tools
 
-first shell script
+## First shell script
 
 vi my-first-shell-script
-#!/bin/bash
 
-create a dirctory
+#!/bin/bash
+#create a dirctory
 mkdir data
-
-create two files
+#create two files
+cd data/
 touch file1 file2
-----------------------
+
+save it and then change permission to executable then execute
+
+Output should look like
+
+part1:(after executing the script and ls)
+```
+data  my-first-shell-script.sh
+```
+part2:(after doing cd data/ and ls)
+```
+file1  file2
+```
+
+## Node health check script
+
 vi nodehealth.sh
-
+```
 #!/bin/bash
-
 ###########################
 # Author: Honey
-# Date: 01/12/2022
+# Date: 08/09/2024
 #
 # This script outputs the node health
 #
 # Version:v1
 #######################
+set -x #debug mode
 echo "print disk space"
 df -h
 
@@ -70,47 +85,79 @@ free -g
 
 echo "print the nproc"
 nproc
--------------------------
+```
+Output should look like
+```
++ echo 'print disk space'
+print disk space
++ df -h
+Filesystem      Size  Used Avail Use% Mounted on
+devtmpfs        467M     0  467M   0% /dev
+tmpfs           477M     0  477M   0% /dev/shm
+tmpfs           477M  404K  476M   1% /run
+tmpfs           477M     0  477M   0% /sys/fs/cgroup
+/dev/xvda1      8.0G  1.8G  6.3G  23% /
+tmpfs            96M     0   96M   0% /run/user/1000
++ echo 'print the memory'
+print the memory
++ free -g
+              total        used        free      shared  buff/cache   available
+Mem:              0           0           0           0           0           0
+Swap:             0           0           0
++ echo 'print the nproc'
+print the nproc
++ nproc
+1
+```
 
-set -x -----> debug mode
+ps -ef ----> process the entire details in full format
 
---------------------------
-
-ps -ef ----process entire details in full format
-----------------------------
+### Create a script
 vi test.sh
-
+```
 #!/bin/bash
-
 echo 1
 echo 11
 echo 12
 echo 55
 echo 99
+```
+save it and change the permission to executable then execute
 
 ./test.sh | grep 1
 
-pipe cmd sends the o/p of fist cd to second cmd
+Output
+```
+1
+11
+12
+```
+pipe cmd sends the o/p of fist cmd to second cmd
 
----------------------------------------
-channels every virtual machine has
+**Note:** Channels every virtual machine has
 stdin, stdout, stderr
 
-Q. date | echo "this" . what is the output of this command?
-it will only print "this" because date is a system default command it sends the output to stdin but pipe will not be able to receive the information from stdin pipe can only receive the information if the command is not sending the information to stdin and if the command is ready to pass the information to the next command 
----------------------------------------
+`Q.5 date | echo "this" . what is the output of this command?`
+It will only print "this" because date is a system default command it sends the output to stdin but pipe will not be able to receive the information from stdin pipe can only receive the information if the command is not sending the information to stdin and if the command is ready to pass the information to the next command 
+
+#### Command:
 awk --> pattern scanning and processing language
 
-ps -ef | grep amazon | awk -F" "'{print $2}'
+ps -ef | grep amazon | awk -F" "'{print$2}'
 
----------------------
-vi test.sh
-
+##### Example
+vi test
+```
 My name is Honey
-my employee is 11111
+```
+save it and change the permission to executable then execute
 
-grep name test | awk -F" "print $4'
---------------------
+grep name test | awk -F" " '{print$4}'
+
+Output
+```
+honey
+```
 
 if you are using pipe command in your script then you need to add to syntax
 set -e --->exit the script when there is an error,it did not catch the pipefailure
