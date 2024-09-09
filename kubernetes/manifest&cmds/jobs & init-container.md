@@ -106,3 +106,47 @@ spec:
            command: ["/bin/bash", "-c", "echo Technical-Guftgu; sleep 5"]
          restartPolicy: Never
 ```
+## Init Container
+
+- Init container are specilised containers that run before app(main) container in a pod.
+- Init container always run to completion.
+- If a pod's init container fails, kubernetes repeatedly restarts the pod until the init container succeeds.
+- Init container do not support rediness probe.
+
+#### Usecases: 
+- Seeding a DB
+- Delaying the application launch until the dependencies are ready.
+- Clone a git repository into a volume.
+- Generate a configuration file dynamically.
+
+`vi init.yml`
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: initcontainer
+spec:
+  initContainers:
+  - name: c1
+    image: centos
+    command: ["/bin/sh", "-c", "echo LIKE AND SUBSCRIBE TECHNICAL GUFTGU > /tmp/xchange/testfile; sleep 30"]
+    volumeMounts:        
+      - name: xchange
+        mountPath: "/tmp/xchange"  
+  containers:
+  - name: c2
+    image: centos
+    command: ["/bin/bash", "-c", "while true; do echo `cat /tmp/data/testfile`; sleep 5; done"]
+    volumeMounts:
+      - name: xchange
+        mountPath: "/tmp/data"
+  volumes:                            
+  - name: xchange
+    emptyDir: {}
+```
+save it and apply this configuration
+
+```
+kubectl apply -f init.yml
+```
