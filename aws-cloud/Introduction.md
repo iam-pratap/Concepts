@@ -63,4 +63,11 @@ Cloud computing is a on-demand delivery of IT resources over the internet with p
 
 ## Cloud Storage types
 
-- **Block storage** : Block storage as the name suggests the data is stored in the form of block
+- **Block storage** : The name suggests the data is stored in the form of block. It store the data in the form of fixed-size of chunks which is called block with its own address but no metadata which provide the context for what that block of data is all about.
+  e.g: Elastic block storage(EBS)
+
+    - It cannot be accessed directly through APIs.
+    - It is controlled or accessed by the external operating system.
+
+- **Object Storage** : It is used to store the unstructural data which can be a photo, video, audio of any size. e.g : Simple storage service(s3)
+- **File storage** : It is a method for storing data in the cloud that provides servers and applications access to data through shared file systems. This compatibility makes cloud file storage ideal for workloads that rely on shared file systems and provide simple integration without code changes. e.g : Elastic file system(EFS)
