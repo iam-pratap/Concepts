@@ -22,4 +22,31 @@
 - Accessing EC2 Instances Across AWS Accounts
 - Currently Developer in private cloud and wants to communicate to Storage service in aws cloud
 
+### Cross-Account IAM Roles
 
+You want to grant an EC2 instance in Account A the ability to access an S3 bucket in Account B. This can be achieved using cross-account IAM roles.
+
+**Step1:** Create IAM Role in Account B, go to the IAM console and create a new IAM role.
+
+**Step2:** Attach permissions: Attach the necessary permissions to the role, such as AmazonS3FullAccess or more granular permissions based on your specific requirements.
+
+**Step3:** Trust relationship: Configure the role's trust relationship to allow users or services from Account A to assume it.
+
+**Step4:** Obtain role ARN: Get the ARN (Amazon Resource Name) of the IAM role you created in Account B.
+
+**Step5:** Assume role: In Account A, use the AWS CLI, SDKs, or the console to assume the role from Account B. This will provide temporary security credentials to access the S3 bucket in Account B.
+
+**Step6** Configure EC2 Instance: Create or modify instance: Create a new EC2 instance or modify an existing one in Account A.
+
+**Step7** IAM instance profile: Attach the IAM role you created in Account B to the EC2 instance as an IAM instance profile.
+
+Example using AWS CLI:
+
+In Account A:
+```
+Bash
+aws sts assume-role --role-arn arn:aws:iam::account-b-id:role/s3-access-role --role-session-name MySessionName
+
+# Use the temporary credentials to access the S3 bucket
+aws s3 ls s3://bucket-name
+```
