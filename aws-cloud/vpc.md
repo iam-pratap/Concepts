@@ -91,5 +91,7 @@ In public-RT --> go to routes add destination:0.0.0.0/0 and target:igw save it ;
 In private-RT --> go to routes add ddestination:0.0.0.0/0 and target:natg save  it ; go to subnet association --> add private subnet and save it
 
 
+### How to create VPC Endpoint
+To use VPC Endpoint, Create VPC without nat gateway
 
-
+VPC Endpoint --> go to endpoint ; create endpoint ; select service category:aws services ; services:com.amazonaws.ap-south-1.s3 ; select VPC and private route table then save it ; go to private-RT and associate private-subnet then save it
