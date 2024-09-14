@@ -69,9 +69,6 @@ A flow log captures information about the IP traffic going to and from network i
 
 Connect your VPCs to your on-premises networks using AWS Virtual Private Network (AWS VPN).
 
-### Flow of creating VPC
-
-VPC ----> Subnets -----> Gateway -----> Route Table
 
 ## How to Create VPC
 Now, we create a vpc with Public and Private subnets, NAT gateway, Internet gateway
@@ -95,3 +92,4 @@ In private-RT --> go to routes add ddestination:0.0.0.0/0 and target:natg save  
 To use VPC Endpoint, Create VPC without nat gateway
 
 VPC Endpoint --> go to endpoint ; create endpoint ; select service category:aws services ; services:com.amazonaws.ap-south-1.s3 ; select VPC and private route table then save it ; go to private-RT and associate private-subnet then save it
+
