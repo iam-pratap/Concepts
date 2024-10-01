@@ -4,12 +4,12 @@ Create a directory for your Terraform project and create a Terraform configurati
 
 ```hcl
    provider "aws" {
-     region = "us-east-1"  # Set your desired AWS region
+     region = "ap-south-1"  # Set your desired AWS region
    }
 ```
 ```hcl
    resource "aws_instance" "first-infra" {
-  ami                     = "ami-08718895af4dfa033" # Set an appropriate AMI ID
+  ami                     = "ami-06f855639265b5541" # Set an appropriate AMI ID
   instance_type           = "t2.micro"
   
   tags = {
