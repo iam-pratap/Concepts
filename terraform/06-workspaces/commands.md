@@ -3,7 +3,7 @@
 terraform workspaces new <workspace-name>
 ```
 
-**Note** New folder(workspace) is created under `terraform.tfstate.d`
+**Note** New folder(workspace) is created under `terraform.tfstate.d` and seperate statefile for each workspace.
 
 ### To switch to new workspace
 ```
