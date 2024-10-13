@@ -1,13 +1,16 @@
-Install and configure jenkins
+# CI CD PIPELINE
 
-Install java
+## Launch an Ec2 instance(ubuntu)
 
+### Install java
+```
 sudo apt update
 sudo apt install fontconfig openjdk-17-jre
 java -version
+```
+### Install and Configure Jenkins 
 
-Install java
-
+```
 sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \
   https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
 echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]" \
@@ -15,40 +18,44 @@ echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]" \
   /etc/apt/sources.list.d/jenkins.list > /dev/null
 sudo apt-get update
 sudo apt-get install jenkins
+```
 
-To check the status of jenkins
-
-systemctl status jenkins 
-
-When the system starts system automatically starts
-
+#### To check the status of jenkins
+```
+sudo systemctl status jenkins 
+```
+#### Whenever the system starts jenkins start automatically
+```
 sudo systemctl enable jenkins
-
+```
 
 Take the public ip and port 8080 and paste in browser
 if jenkins is not running in browser then open port 8080 in security group
 
-using this sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+using this you will get the jenkins password
+`sudo cat /var/lib/jenkins/secrets/initialAdminPassword`
 
-you will get the jenkins password
-
-
+**Login Successfull !!**
 
 Customize Jenkins > Install suggested plugins
 
 create first admin user
 
 username --> admin
+
 password --> admin
+
 confirm password --> admin
+
 fullname --> honey Pratap
+
 email- honeypratap07@gmail.com
 
-instance configuration > Jenkins URL : http://jenkins-Ip:8080/ > save and finish
+Instance configuration > Jenkins URL : http://jenkins-Ip:8080/ > save and finish
 
-Jenkins is Ready!
+**Jenkins is Ready!**
 
-dashboard > create a job > item name > freestyle project
+Dashboard > create a job > item name > freestyle project
 
 
 Console op
