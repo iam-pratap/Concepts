@@ -49,7 +49,7 @@ confirm password --> admin
 
 fullname --> honey Pratap
 
-email- honeypratap07@gmail.com
+email -->  honeypratap07@gmail.com
 
 Instance configuration > Jenkins URL : http://jenkins-Ip:8080/ > save and finish
 
@@ -57,9 +57,16 @@ Instance configuration > Jenkins URL : http://jenkins-Ip:8080/ > save and finish
 
 Dashboard > create a job > item name > freestyle project
 
+General configurations
 
-Console op
-
+Build Steps > Execute shells
+```
+echo "This is pratap"
+mkdir -p devops
+echo "My folder is created"
+```
+Console output
+```
 Started by user Honey Pratap
 Running as SYSTEM
 Building in workspace /var/lib/jenkins/workspace/my-test
@@ -70,16 +77,15 @@ This is pratap
 + echo My folder is created
 My folder is created
 Finished: SUCCESS
+```
 
+### Declarative pipeline
 
-Decrarative pipeline
+Dashboard > item-name > item_type > pipeline
 
-dashboard > itemname > pipeline
+Pipeline > Definition > pipeline script
 
-pipeline > deginition > pipeline script
-
-script
-
+```
 pipeline {
     agent any
 
@@ -102,14 +108,12 @@ pipeline {
                 
     }
 }
+```
 
+Save it and Build Now
 
-save it 
-build now
-
-
-console output
-
+Console output
+```
 Started by user Honey Pratap
 [Pipeline] Start of Pipeline
 [Pipeline] node
@@ -137,46 +141,49 @@ Bye World
 [Pipeline] // node
 [Pipeline] End of Pipeline
 Finished: SUCCESS
+```
 
+### Multi Agent
 
-Multi agent
+Create a new instance for jenkins agent
 
-dashboard > manage jenkins > nodes > new node
+Install java
+```
+sudo apt update
+sudo apt install fontconfig openjdk-17-jre
+java -version
+```
+Connect to master <-----> agent
 
-create a new instance for jenkins agent
+Generate key public & private key pair using `ssh-keygen`
 
-we need to install only java
+master ---> private key ----> id_ed25519
 
-connect master <-----> agent
+agent --->public key ----> id_ed25519.pub
 
-generate key public & private key pair
+Copy public key and paste to agent server in `/.ssh/authorised keys`
 
-ssh-keygen
+Dashboard > Manage jenkins > Nodes > new-node
 
-ex: id_ed25519 ---> private key
-id_ed25519.pub ---> public key
+Create node > new node > agent-vinod
 
-master---> private key
-agent --->public key
-
-copy public key and paste to agent authorised keys
-
-create node > new node > agent-vinod
-type ---> permanent agent
+Type ---> permanent agent
 
 create
 
-number of executers --> 1
-remote root directory ---> /home/ubuntu
+Number of executers --> 1
+
+Remote root directory ---> /home/ubuntu
+
 labels ---> vinod
 
-usage --> use this node as much as possible
+Usage --> use this node as much as possible
 
 launch method --> launch agents via SSH
 
-host --> agent instance public ip address
+host --> agent public ip-address
 
-credentials ---> add
+Credentials ---> add
 
 jenkins credentials provider:jenkins
 
@@ -192,14 +199,14 @@ description --> ubuntu-key
 
 username --> ubuntu
 
-private key --> enter directly and add private key
-save 
+private key --> enter directly and add private key then save
+
 select > ubuntu(ubuntu-key)
 
 host key verification strategy ---> non verifying verification strategy
 
 save it
 
-go to dashboard > democicd 
+Go to dashboard > job-name
 
-agent any to agent { label: "vinod" }
+Change the label from agent any to agent { label "vinod" }
