@@ -205,7 +205,7 @@ select > ubuntu(ubuntu-key)
 
 host key verification strategy ---> non verifying verification strategy
 
-save it
+save it and make sure agents are online 
 
 Go to dashboard > job-name
 
