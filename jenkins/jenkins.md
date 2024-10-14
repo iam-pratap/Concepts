@@ -210,3 +210,167 @@ save it and make sure agents are online
 Go to dashboard > job-name
 
 Change the label from agent any to agent { label "vinod" }
+
+### Declarative Pipeline with multiagent
+
+Dashboard > new-item > Djangopipeline > type > pipeline
+
+Tick GitHub project and copy GitHub project url
+
+Project url ---> paste here
+
+Display name --> Django notes app
+
+Build triggers --> GitHub hook trigger for GITScm polling
+
+pipeline > definition > pipeline script
+
+```
+pipeline {
+    agent { label "vinod" }
+
+    stages {
+        stage('code') {
+            steps {
+                echo 'This is cloning the code'
+                git url: https://github.com/iam-pratap/jenkins-test.git
+                echo "code cloning successfull"
+            }
+        }
+        stage('build') {
+            steps {
+                echo 'This is building the code'
+            }
+        }
+        stage('test') {
+            steps {
+                echo 'This is testing the code'
+            }
+        }
+        stage('deploy') {
+            steps {
+                echo 'this is deploying the code'
+            }
+        }
+    }
+}
+```
+Save it and build now
+
+manage jenkins > plugins > available plugin
+
+pipeline stage view > install this and restart jenkins
+
+#### Install Docker for build
+
+In Agent-server
+```
+sudo apt-get install docker.io
+sudo usermod -aG docker ubuntu
+docker ps
+```
+```
+pipeline {
+    agent { label "vinod" }
+
+    stages {
+        stage("Code") {
+            steps {
+                echo "This is cloning the code"
+                git url: "https://github.com/iam-pratap/django-notes-app.git", branch:"main"
+            }
+        }
+        stage("Build") {
+            steps {
+                echo "This is building the code"
+                sh "docker build -t notes-app:latest ."
+            }
+        }
+        stage("Test") {
+            steps {
+                echo "This is testing the code"
+            }
+        }
+        stage("Deploy") {
+            steps {
+                echo "This is deploying the code"
+                sh "docker run -d -p 8000:8000 notes-app:latest"
+            }
+        }
+    }
+}
+```
+#### Using Docker Compose
+```
+sudo apt-get install docker-compose-v2
+```
+Stop container and remove because the port is already using
+```
+docker compose up -d
+```
+#### Push to Docker Hub
+
+First we need to Add Credentials for Dockerhub
+
+Dashboard > manage jenkins > credentials > system > global credentials(unrestricted)
+
+username --> pratap15
+
+password --> dckr_pat_gxTcFxYWuopnHcJgZgFj9f8iYuk
+
+id --> dockerhubcred
+
+description --> dockerhubcred 
+
+```
+pipeline {
+    agent { label "vinod" }
+
+    stages {
+        stage("Code") {
+            steps {
+                echo "This is cloning the code"
+                git url: "https://github.com/iam-pratap/django-notes-app.git", branch:"main"
+            }
+        }
+        stage("Build") {
+            steps {
+                echo "This is building the code"
+                sh "docker build -t notes-app:latest ."
+            }
+        }
+        stage("push to docker") {
+            steps {
+                withCredentials([usernamePassword
+                (credentialsId:"dockerhubcred",
+                passwordVariable:"dockerHubPass",
+                usernameVariable:"dockerHubUser")]){
+                sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}"
+                sh "docker image tag notes-app:latest ${env.dockerHubUser}/notes-app:latest"
+                sh "docker push ${env.dockerHubUser}/notes-app:latest"
+                }
+            }
+        }
+        
+        
+        stage("Deploy") {
+            steps {
+                echo "This is deploying the code"
+                sh "docker compose up -d"
+            }
+        }
+    }
+}
+```
+
+#### Webhook
+
+Go to Github_repo > setting > webhook > add webhook
+
+payload URL - http://13.201.60.184:8080/github-webhook/
+
+Select --> send me everything
+
+active (delivery was successfull)
+
+
