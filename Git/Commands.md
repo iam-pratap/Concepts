@@ -64,8 +64,13 @@ Username:- iam-pratap
 Password:- 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
 token_name:- github-token
 ```
-Fetches changes from the specified remote repository and merges them into the current branch.
+
+List and delete the remotes from git
 ```
+git remote -v
+git remote remove <remote name>
+```
+
 git pull -u origin main
 ```
 ### .gitignore
