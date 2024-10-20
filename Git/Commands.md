@@ -71,8 +71,6 @@ git remote -v
 git remote remove <remote name>
 ```
 
-git pull -u origin main
-```
 ### .gitignore
 
 To Ignore some files while committing
