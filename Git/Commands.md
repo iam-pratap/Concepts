@@ -61,7 +61,8 @@ git push -u origin main
 (enter username & password)
 
 Username:- iam-pratap
-Password:- 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
+Password:- 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
+token_name:- github-token
 ```
 Fetches changes from the specified remote repository and merges them into the current branch.
 ```
