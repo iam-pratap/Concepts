@@ -49,7 +49,7 @@ Displays the commit history of the current branch.
 git log
 git log --oneline
 ```
-It shows the commit-ids
+It shows the commit details using commit-ids
 ```
 git show <commit-id>
 ```
