@@ -133,7 +133,7 @@ git rebase <feature1> <main>
 
 ### Git Stashing 
 
-To stash an item
+To stash an item (from staging area)
 ```
 git stash
 ```
