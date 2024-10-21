@@ -110,8 +110,11 @@ Login Succeeded
 #### Dockerfile creation steps
 
 step1:- Create a file named "Dockerfile"
+
 step2:- Add instructions in Dockerfile
+
 step3:- Build Dockerfile to create image
+
 step4:- Run image to create container
 
 Create a Dockerfile
@@ -220,7 +223,7 @@ latest: digest: sha256:6e49841ad9e720a7baedcd41f9b666fcd7b583151d0763fe78101bb82
 
 To find out images in docker hub
 ```
-docker search
+docker search <image-name>
 ```
 Download image from docker hub to local machine
 ```
@@ -282,14 +285,19 @@ Create the container from this image & run
 ```
 docker run -it --name container1 myimage /bin/bash
 ```
-do ls, you can myvolume1
+do `ls`, you can see this volume folder `myvolume1`
 
 ### Share volume with another container
   container-------<Volume>---------container
+  
+  container2 --> new container
+
+  container1 --> old container
+  
 ```
 docker run -it --name container2 --privileged=true --volumes-from container1 ubuntu /bin/bash
 ```
-After creating container2 with volume, myvolume1 is visible and whatever you do in one volume, you can see the changes in container1
+After creating container2 with volume, myvolume1 is visible and whatever you do in this volume, you can see the changes in container1's volume
 ```
 touch /myvolume1/samplefile
 docker start container1
@@ -307,9 +315,9 @@ docker run -it --name container3 -v /volume2 ubuntu /bin/bash
 host-------<volume>---------container
 
 verify files in /home/ubuntu
-
+```
 docker run -it --name hostcont -v /home/ubuntu:/pratap --privileged=true ubuntu /bin/bash
-
+```
 cd /pratap
 
 Do ls, now you can see all files of host machine
