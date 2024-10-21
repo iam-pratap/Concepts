@@ -96,7 +96,7 @@ To see the list of Available branches
 ```
 git branch
 ```
-Create a new Branch
+Create a new Branch(when we create a new branch all the data on master branch copied to new branch. check using `ls` command)
 ```
 git branch <branch-name>
 ```
