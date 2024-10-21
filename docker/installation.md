@@ -287,7 +287,7 @@ do ls, you can myvolume1
 ### Share volume with another container
   container-------<Volume>---------container
 ```
-docker run -it --name container2 --privileged=true --volumes-from container1 ubuntu1 /bin/bash
+docker run -it --name container2 --privileged=true --volumes-from container1 ubuntu /bin/bash
 ```
 After creating container2 with volume, myvolume1 is visible and whatever you do in one volume, you can see the changes in container1
 ```
