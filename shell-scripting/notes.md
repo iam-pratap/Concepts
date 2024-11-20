@@ -254,16 +254,18 @@ syntax: find / -name <name>
 vi ifelse.sh
 
 ```
-#!/bin/bash
-a=4
-b=10
-
-if [ $a > $b ]
-then
-   echo "a is greater than b"
+#Initializing two variables 
+a=20 
+b=30 
+  
+if [ $a > $b ] 
+then 
+    #If they are equal then print this 
+    echo "a is greater than b"
 else
-   echo "b is greater than a"
-fi
+    #else print this 
+    echo "b is greater than a"
+fi 
 ```
 Output
 ```
