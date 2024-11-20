@@ -62,7 +62,7 @@ mkdir data
 cd data/
 touch file1 file2
 ```
-save it and then change permission to executable then execute
+save it and then change permission to executable`chmod +x my-first-shell-script.sh` then execute
 
 Output should look like
 
