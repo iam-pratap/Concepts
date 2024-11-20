@@ -256,20 +256,20 @@ vi ifelse.sh
 ```
 #Initializing two variables 
 a=20 
-b=30 
+b=20 
   
-if [ $a > $b ] 
+if [ $a == $b ] 
 then 
     #If they are equal then print this 
-    echo "a is greater than b"
+    echo "a is equal to b"
 else
     #else print this 
-    echo "b is greater than a"
+    echo "a is not equal to b"
 fi 
 ```
 Output
 ```
-a is greater than b
+a is equal to b
 ```
 ### for loops
 vi forloop.sh
