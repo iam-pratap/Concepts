@@ -144,19 +144,20 @@ Output
 11
 12
 ```
-pipe cmd sends the o/p of fist cmd to second cmd
+pipe --> Get the output of first commands and send it to second command
 
 **Note:** Channels every virtual machine has
 stdin, stdout, stderr
 
-`5 date | echo "this" . what is the output of this command?`
+`5. date | echo "this" . what is the output of this command?`
 
-It will only print "this" because date is a system default command it sends the output to stdin but pipe will not be able to receive the information from stdin pipe can only receive the information if the command is not sending the information to stdin and if the command is ready to pass the information to the next command 
+It will only print "this" because date is a system default command it sends the output to stdin but pipe will not be able to receive the information from stdin pipe can only receive the information if the command is not sending the information to stdin and if the command is ready to pass the information to the next command. 
 
 #### Command:
 awk --> pattern scanning and processing language
-
-ps -ef | grep amazon | awk -F" "'{print$2}'
+```
+ps -ef | grep amazon | awk -F" " '{print $2}'
+```
 
 ##### Example
 vi test
