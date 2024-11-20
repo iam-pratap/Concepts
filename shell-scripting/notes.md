@@ -122,7 +122,7 @@ print the nproc
 1
 ```
 
-ps -ef ----> process the entire details in full format
+ps -ef ----> process the entire details(stopped, daemon and zombie process) in full format
 
 ### Create a script
 vi test.sh
