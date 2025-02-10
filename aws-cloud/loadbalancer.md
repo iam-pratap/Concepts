@@ -71,7 +71,7 @@ Listener on Port 443 (HTTPS) → Routes traffic to different Target Groups based
 - Client sends a request to the Load Balancer.
 - Listener checks the request and determines routing based on rules.
 - Listener forwards the request to the correct Target Group.
-- arget Group sends the request to a healthy EC2 instance or service.
+- Target Group sends the request to a healthy EC2 instance or service.
 
 ## Steps to Create an AWS ELB using the AWS Console
 
