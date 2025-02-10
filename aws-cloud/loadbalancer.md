@@ -28,7 +28,7 @@ AWS offers three main types of load balancers:
 - Provides transparent network traffic inspection.
 - **Use case:** Security appliances, deep packet inspection.
 
-### Classic Load Balancer (CLB) [Deprecated for new apps]
+### 4. Classic Load Balancer (CLB) [Deprecated for new apps]
 - Works at both Layer 4 (TCP) & Layer 7 (HTTP/HTTPS).
 - Older generation ELB, replaced by ALB and NLB.
 - Still used for legacy applications.
@@ -50,6 +50,7 @@ A Target Group in AWS ELB defines the backend destinations where incoming traffi
 If you have a microservices architecture, you might have:
 
 Target Group 1 → for /api/orders (routes to Order Service EC2 instances).
+
 Target Group 2 → for /api/users (routes to User Service EC2 instances).
 
 ### Listeners
