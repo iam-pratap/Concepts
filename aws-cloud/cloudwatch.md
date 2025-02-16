@@ -66,11 +66,17 @@ Amazon CLoudwatch logs is a service provided by AWS that allows you to monitor, 
 AWS canaries, also known as AWS cloud watch synthetics canaries, are monitoring service provided by AWS that enables you to continuously monitor your endpoints and APIs. The canaries are small, lightweight scripts that run on a schedule to simulate user behaviour on your applications. They can be used to monitor the availability and latency of web applications, APIs and other internet-accessible services.
 
 **1. Proactive Monitoring:**  Canaries allow you to proactively monitor your applications and endpoints, detecting issues before they impact end users.
+
 **2. Customizable Scripts:** You can create custom scripts to simulate different user interactions with your application, such as logging in, navigating through pages, and making API calls.
+
 **3. Flexible Scheduling:** Canaries can be scheduled to run at regular intervals, allowing you to monitor your applications continuously.
+
 **4. Alerting and Notifications:** AWS canaries integrate with AWS cloud watch alarms, allowing you to set up alerts based on predefined thresholds for latency, errors, or 
      other metrics. You can receive notifications via various channels like email, SMS, or AWS SNS.
-**5. Cloudwatch integration:** Canaries send monitoring data to Cloudwatch, where you can view and analyse metrics, create dashboards, and set up automated actions based on specific conditions
+     
+**5. Cloudwatch integration:** Canaries send monitoring data to Cloudwatch, where you can view and analyse metrics, create dashboards, and set up automated actions based on specific conditions.
+
 **6. Multi-region support:** Canaries can be deployed in multiple AWS regions to monitor the availability and latency of your applications from different geographical locations.
+
 **7. Secure Execution Environment:** Canaries run in a secure, isolated environment within AWS, ensuring that your monitoring scripts do not impact the performance or security of your production.
    
