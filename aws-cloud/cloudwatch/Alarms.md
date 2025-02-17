@@ -67,3 +67,35 @@ done
 then check the graph
 
 if CPU utilization reaches 80 or above the instance reboot
+
+#### Using rule
+
+Go to cloudwatch > create a rule
+
+**Define rule detail**
+
+Rule detail
+
+name -->test-rule
+
+eventbus --> default
+
+rule type -- event pattern
+
+**Build event pattern**
+
+Events --> AWS events or EventBridge partner events
+
+Event pattern --> Use pattern form
+
+Event service --> AWS services
+
+AWS services --> ec2
+
+Event type --> Ec2 instance state-change Notification > all state > next
+
+Target > target type > aws service
+
+Select target > Sns topic > location > next > create rule
+
+Now, if there is any changes in the state of instance you will see the email notification
