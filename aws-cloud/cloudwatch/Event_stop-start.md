@@ -30,7 +30,7 @@ Create a new policy > paste
 ```
 Next > give the policy name > Ec2StopStartPolicy > create policy
 
-Create a IAM Role for lambda
+Create a IAM Role for `Lambda`
 
 Create role > trusted entity type:AWS service > usecase:lambda > next
 
@@ -38,11 +38,11 @@ Add permissions > permissions policies > Ec2StopStartPolicy > next
 
 Role name > Ec2StopStartRole > create role
 
-### Create lambda function
+## Create lambda function
 
 Create function > Author from scratch
 
-function name > EC2_Stop_Function
+function name > `EC2_Stop_Function`
 
 Runtime > python 3.10
 
@@ -65,7 +65,7 @@ go to configuration > set the timeout to 10 Seconds
 
 Create function > Author from scratch
 
-function name > EC2_Start_Function
+function name > `EC2_Start_Function`
 
 Runtime > python 3.10
 
@@ -86,34 +86,39 @@ deploy
 
 go to configuration > set the timeout to 10 Seconds
 
+## Cloudwatch Event Bridge
+
 Go to Cloudwatch(event bridge)
 
 Define rule detail 
 
-Name > Stop_EC2_Schedule
+Name > `Stop_EC2_Schedule`
 
 Event bus > default
 
 Rule type > Schedule > schedule pattern > fine-grained
 
-cron expression > 35 06 * * ? * > localtime zone > next
+cron expression > 35 06 * * ? * > UTC > next
 
 target > AWS Service > Lambda > EC2_Stop_Function
 
 Define rule detail 
 
-Name > Start_EC2_Schedule
+Name > `Start_EC2_Schedule`
 
 Event bus > default
 
 Rule type > Schedule > schedule pattern > fine-grained
 
-cron expression > 50 06 * * ? * > localtime zone > next
+cron expression > 50 06 * * ? * > UTC > next
 
 target > AWS Service > Lambda > EC2_Start_Function
-Add destination for notification
 
-Destination configuration
+## Configure SNS
+
+Do this for both functions(stop, start)
+
+Add destination for notification > Destination configuration
 
 source > Asynchronous invocation 
 
@@ -121,5 +126,6 @@ condition > On success
 
 destination type > SNS topic > select destination > save
 
-Configure Lambda
+### Testing!!!!!!!!
+
 
