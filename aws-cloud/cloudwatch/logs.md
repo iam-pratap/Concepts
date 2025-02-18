@@ -10,7 +10,7 @@ Launch an Ec2 instance
 
 Create an IAM role with having CW full access policy attached with it.
 
-Go to IAM > aws service > usecase:Ec2 > next > search policies > CW Full Access
+Go to IAM > create Role > aws service > usecase:Ec2 > next > search policies > CW Full Access
 next > role name > cloudwatch logs role > create role
 
 Attach the role with EC2 instance
@@ -35,3 +35,5 @@ start and enable the cloudwatch agent service(awslogsd)
 systemctl enable --now  awslogsd.service
 ```
 verify the logs in AWS
+
+Now, you will see there is new folder created under log groups `/var/log/messages`
