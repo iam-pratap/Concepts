@@ -26,5 +26,9 @@
 - AWS lambda will then execute the code in your behalf.
 - After the code is invoked, lambda automatically take care of provisioning and managing the required servers.
 
-| AWS Lambda | AWS EC2|
-| - AWS Lambda is Platform as a service | - AWS 
+| AWS Lambda | AWS EC2 |
+|------------|-----------|
+| - AWS Lambda is Platform as a service | - AWS EC2 is an Infrastructure as a Service |
+| - It supports only limited languages like Node js, python, java, C#, ruby, Go and powershell | - No Environment restrictions, you can run any code or language.|
+| - Write your code and push the code into AWS lambda | - For the first time in EC2, you have to choose the OS and install all the software required and then push your code in EC2 |
+| - You cannot log into compute instances, choose customized OS or language platform | - You can select variety of OS, instance types, network & security patches, RAM, & CPU etc |
