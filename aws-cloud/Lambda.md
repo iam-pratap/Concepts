@@ -32,3 +32,23 @@
 | - It supports only limited languages like Node js, python, java, C#, ruby, Go and powershell | - No Environment restrictions, you can run any code or language.|
 | - Write your code and push the code into AWS lambda | - For the first time in EC2, you have to choose the OS and install all the software required and then push your code in EC2 |
 | - You cannot log into compute instances, choose customized OS or language platform | - You can select variety of OS, instance types, network & security patches, RAM, & CPU etc |
+
+## Terms used in Lambda
+
+#### 1. Function
+A Function is a resource that you can invoke to run your code in AWS Lambda. A Function has code that processes events, and a runtime that passes request and responses between lambda and the function code.
+
+#### 2. Runtime
+ Lambda runtimes allows functions in different languages to run in the same base execution environment. The runtime sits in between the lambda service and your function code, relaying invocation events, context information and responses between the two.
+
+#### 3. Event 
+It is a JSON formatted document that contains data for a function to process.
+
+#### 4. Event Source/Trigger
+An AWS Service such as Amazon SNS, or a customr service, that trigger your function and executes its logic.
+
+#### 5. Downstream Resources
+An AWS Service, such as DynamoDB tables or S3 buckets, that your lambda function calls once it is triggered.
+
+#### 6. Concurrency
+No of request that your function is serving in any given time.
