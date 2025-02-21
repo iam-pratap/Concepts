@@ -52,3 +52,35 @@ An AWS Service, such as DynamoDB tables or S3 buckets, that your lambda function
 
 #### 6. Concurrency
 No of request that your function is serving in any given time.
+
+
+## When Lambda Triggers
+
+You can use AWS lambda  to run your code in response to -
+
+- Events such as changes to data in an Amazon S3 bucket or an Amazon DynamoDB table.
+- To run your code in response to HTTP request using Amazon API Gateway.
+- With these capabilities, you can use lambda to easily build data processing triggers for AWS services like S3 and DynamoDB, processing streaming data stored in kinesis or create your own backend that operates at AWS Scale, performance and security.
+
+### Example of S3
+
+- The user create an object in a bucket.
+- Amazon S3 detects the object created event.
+- Amazon S3 invokes your lambda functions using the permission provided by the execution role.
+- Amazon S3 knows which lambda function to invoke based on the event source mapping that is stored in the bucket notification configuration.
+
+
+## AWS Lambda function configuration
+
+- A Lambda function consist of code and any associated dependencies.
+- In addition, a lambda function also has configuration information associated with it.
+- Initially, you specify the configuration information when you create a lambda function.
+- Lambda provides an API for you to update some of the cofiguration data.
+
+
+## Lambda function configuration information includes the following key elements-
+
+- Compute resources that you need you only specify the amount of memory you want to allocate from your lambda function.
+- AWS Lambda allocates, CPU power proportional to the memory by using the same ration as a general purpose amazon EC2 instance type, such as an M3 type.
+- You can update the configuration and request additional memory in 64MB increments from 128MB to 3008MB.
+- Functions larger than 15
