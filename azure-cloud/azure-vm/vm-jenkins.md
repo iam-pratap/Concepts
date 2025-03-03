@@ -1,6 +1,4 @@
- CI CD PIPELINE
-
-## Launch an Ec2 instance(ubuntu)
+## Launch an Virtual machine(ubuntu) using Azure
 
 ### Install java
 ```
@@ -31,6 +29,8 @@ sudo systemctl enable jenkins
 
 Take the public ip and port 8080 and paste in browser
 if jenkins is not running in browser then open port 8080 in security group
+
+Make sure ports are open `8080`
 
 using this you will get the jenkins password
 `sudo cat /var/lib/jenkins/secrets/initialAdminPassword`
